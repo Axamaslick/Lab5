@@ -1,5 +1,6 @@
 package com.example.lab5
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioButton
@@ -12,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var intent: Intent
     private lateinit var textInput: TextInputEditText
     private lateinit var rb1: RadioButton
     private lateinit var rb2: RadioButton
@@ -35,18 +37,23 @@ class MainActivity : AppCompatActivity() {
         rb3 = findViewById(R.id.radioButton3)
         button = findViewById(R.id.button)
         rg = findViewById(R.id.RadioGroup)
-        rg.setOnCheckedChangeListener { group, checkedId ->
-            when (checkedId) {
-                R.id.radioButton1 -> {
-                    // Действие для первой опции
-                }
-                R.id.radioButton2 -> {
-                    // Действие для второй опции
-                }
-                R.id.radioButton3 -> {
-                    // Действие для третьей опции
-                }
+        intent = Intent(this, ResultActivity::class.java)
+
+        val sum = textInput.text.toString()
+        val number: Int = sum.toInt()
+        val numberf: Float = number.toFloat()
+        button.setOnClickListener{
+            if(rb1.isActivated){
+                val res: Float = numberf / 68000
             }
+            else if(rb2.isActivated){
+                val res: Float = numberf / 2600
+            }
+            else if(rb3.isActivated){
+                val res: Float = numberf / 598
+            }
+
+
         }
     }
 }
