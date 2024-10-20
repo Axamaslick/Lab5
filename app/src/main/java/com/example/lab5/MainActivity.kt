@@ -39,18 +39,20 @@ class MainActivity : AppCompatActivity() {
         rg = findViewById(R.id.RadioGroup)
         intent = Intent(this, ResultActivity::class.java)
 
-        var res: Float = 0
-        val sum = textInput.text.toString()
-        val number: Int = sum.toInt()
-        val numberf: Float = number.toFloat()
+
         button.setOnClickListener{
-            if(rb1.isActivated){
+            var res: Float = 1.0f
+            val sum = textInput.text.toString()
+            val number: Int = sum.toInt()
+            val numberf: Float = number.toFloat()
+
+            if(rb1.isChecked){
                 res = numberf / 68000
             }
-            else if(rb2.isActivated){
+            else if(rb2.isChecked){
                 res = numberf / 2600
             }
-            else if(rb3.isActivated){
+            else if(rb3.isChecked){
                 res = numberf / 598
             }
             intent.putExtra("123", res)
